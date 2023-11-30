@@ -6,7 +6,7 @@ params:add_number(
     "melody probability", -- name
     0, -- min
     100, -- max
-    100, -- default
+    50, -- default
     false -- wrap
     )
 
@@ -15,7 +15,7 @@ params:add_number(
     "comp probability", -- name
     0, -- min
     100, -- max
-    100, -- default
+    50, -- default
     false -- wrap
     )
 
@@ -24,7 +24,7 @@ params:add_number(
     "bass probability", -- name
     0, -- min
     100, -- max
-    100, -- default
+    50, -- default
     false -- wrap
     )
 
@@ -284,7 +284,7 @@ end
 
 function melodyNote()
 
-    -- if pivotFlag == 0 then 
+    if pivotFlag == 0 then 
 
         if lastMelodyIndex < 8 or lastMelodyIndex > 25 then
            error("Input value must be between 8 and 25")
@@ -309,14 +309,14 @@ function melodyNote()
     lastMelodyPitch = pitch
     lastMelodyIndex = melodyIndex
 
-    -- elseif pivotFlag == 1 then
-    --     while lastMelodyPitch - pivot >= 12 do pivot = pivot + 12 end
-    --     playNote(pivot, math.random(90,120), 1)
-    --     for i = 1,3 do
-    --         m:cc(123, 0, i)
-    --     end
-    --     pivotFlag = 0
-    -- end
+    elseif pivotFlag == 1 then
+        while lastMelodyPitch - pivot >= 12 do pivot = pivot + 12 end
+        playNote(pivot, math.random(90,120), 1)
+        for i = 1,3 do
+            m:cc(123, 0, i)
+        end
+        pivotFlag = 0
+    end
 end
 
 
